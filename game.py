@@ -2,7 +2,7 @@ import sys
 import pygame
 from player import Player
 from partner import Partner
-#import color_game
+from attack import Attack
 #from gauge import Gauge
 #from yolo_take import detect
 import startsc
@@ -49,6 +49,9 @@ def main():
     #パートナーインスタンスの宣言
     first_partner = Partner(True)
     second_partner = Partner(False)
+    #カニインスタンスの宣言
+    first_crab = Attack(True,2,-1,20,[10,10,10])
+    second_crab = Attack(False,2,-1,20,[10,10,10])
     #プレイヤーグループの設定
     player_group = pygame.sprite.Group()
     player_group.add(first_player)
@@ -57,6 +60,10 @@ def main():
     partner_group = pygame.sprite.Group()
     partner_group.add(first_partner)
     partner_group.add(second_partner)
+    #アタックグループの設定
+    attack_group = pygame.sprite.Group()
+    attack_group.add(first_crab)
+    attack_group.add(second_crab)
     
 
     #大事な大事なメインループ。フレームごとに一回実行
@@ -65,6 +72,12 @@ def main():
             # ESCキーが押されたら終了
             if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_ESCAPE):
                 game_end = True
+            #いったんかに
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_a):
+                first_crab.active = True
+            if (event.type == pygame.KEYUP) and (event.key == pygame.K_a):
+                first_crab.active = False
+                first_crab.init = True
                 
                 
         #描画、アップデートゾーン
@@ -73,6 +86,8 @@ def main():
         player_group.draw(screen)
         partner_group.update()
         partner_group.draw(screen)
+        attack_group.update()
+        attack_group.draw(screen)
         
         
         

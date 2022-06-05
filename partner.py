@@ -6,6 +6,7 @@ Created on Sun Jun  5 14:19:11 2022
 """
 
 import pygame
+from anim_dic import anim_dic
 
 class Partner(pygame.sprite.Sprite):
     
@@ -14,21 +15,10 @@ class Partner(pygame.sprite.Sprite):
         #両プレイヤーで共通の値を登録
         self.update_count = 0
         self.index = 0
-        self.animerate = 60 #この数字を変えるとアニメの一ループの時間が変わる。60で一秒。120で二秒。
+        self.animerate = 70 #この数字を変えるとアニメの一ループの時間が変わる。60で一秒。120で二秒。
         
         #アニメ画像の登録
-        if(Player1 == True):
-            self.norm_animes = [pygame.image.load("./assets/Player1/part1.png"),
-                                pygame.image.load("./assets/Player1/part1.png"),
-                                pygame.image.load("./assets/Player1/part2.png"),
-                                pygame.image.load("./assets/Player1/part3.png")]
-            self.rect = pygame.Rect(250,500,100,100)
-        else:
-            self.norm_animes = [pygame.image.load("./assets/Player2/part1.png"),
-                                pygame.image.load("./assets/Player2/part1.png"),
-                                pygame.image.load("./assets/Player2/part2.png"),
-                                pygame.image.load("./assets/Player2/part3.png")]
-            self.rect = pygame.Rect(750,500,100,100)
+        self.norm_animes, self.rect = anim_dic(Player1, 1)
             
         #アニメ画像の変形
         for num in range(len(self.norm_animes)):
