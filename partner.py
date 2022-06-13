@@ -7,6 +7,7 @@ Created on Sun Jun  5 14:19:11 2022
 
 import pygame
 from anim_dic import anim_dic
+from anim_dic import anime_play
 
 class Partner(pygame.sprite.Sprite):
     
@@ -15,14 +16,23 @@ class Partner(pygame.sprite.Sprite):
         #両プレイヤーで共通の値を登録
         self.update_count = 0
         self.index = 0
-        self.animerate = 70 #この数字を変えるとアニメの一ループの時間が変わる。60で一秒。120で二秒。
+        self.stand_seq =[6,6,6,6,6,6,6,6,6,6,6,6]
+        
+        #パートナーのアタックに関するメンバ
+        self.attack_seq = [10,10,10,10] #attackするときのアニメのフレーム数割り当て
+        self.attack = False
+        self.hantei = False
+        self.attack_init = True
+        
         
         #アニメ画像の登録
         self.norm_animes, self.rect = anim_dic(Player1, 1)
-            
+        #self.attack_animes, self.rect1 = anim_dic(Player1, 4)
+        
+        
         #アニメ画像の変形
-        for num in range(len(self.norm_animes)):
-            self.norm_animes[num] = pygame.transform.scale(self.norm_animes[num], (200, 140))
+        #for num in range(len(self.norm_animes)):
+            #self.norm_animes[num] = pygame.transform.scale(self.norm_animes[num], (200, 140))
             
         hoge = len(self.norm_animes)
         for num in range(hoge - 2):
@@ -37,16 +47,6 @@ class Partner(pygame.sprite.Sprite):
     def update(self):
         
         #アニメ管理 
-        self.framerate = self.animerate / len(self.norm_animes)
+        self.image, end = anime_play(self.norm_animes,self.stand_seq,self.update_count, True)
         
-        if((self.update_count % int(self.framerate)) == 0):
-            self.index += 1
-            
-        if self.index >= len(self.norm_animes):
-            self.index = 0
-            
-        self.image = self.norm_animes[self.index]
         self.update_count += 1
-        if(self.update_count == 60):
-            self.update_count = 0
-        

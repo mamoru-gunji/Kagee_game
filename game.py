@@ -2,6 +2,7 @@ import sys
 import pygame
 from player import Player
 from partner import Partner
+from defence import Defence
 from attack import Attack
 #from gauge import Gauge
 #from yolo_take import detect
@@ -50,8 +51,8 @@ def main():
     first_partner = Partner(True)
     second_partner = Partner(False)
     #カニインスタンスの宣言
-    first_crab = Attack(True,2,-1,20,[10,10,10])
-    second_crab = Attack(False,2,-1,20,[10,10,10])
+    first_crab = Defence(True,2,12,[3,3,3,3,3],[0,0,0,0,5,5,5,5,5,5,5,5])
+    second_crab = Defence(False,2,12,[3,3,3,3,3],[0,0,0,0,5,5,5,5,5,5,5,5])
     #プレイヤーグループの設定
     player_group = pygame.sprite.Group()
     player_group.add(first_player)
@@ -78,6 +79,15 @@ def main():
             if (event.type == pygame.KEYUP) and (event.key == pygame.K_a):
                 first_crab.active = False
                 first_crab.init = True
+            #いったんかに
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_j):
+                second_crab.active = True
+            if (event.type == pygame.KEYUP) and (event.key == pygame.K_j):
+                second_crab.active = False
+                second_crab.init = True
+            #怯みテスト
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_z):
+                first_player.hirumi = True
                 
                 
         #描画、アップデートゾーン

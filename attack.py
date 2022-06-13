@@ -7,6 +7,7 @@ Created on Sun Jun  5 15:27:02 2022
 
 import pygame
 from anim_dic import anim_dic
+from anim_dic import anime_play
 
 class Attack(pygame.sprite.Sprite):
     
@@ -45,17 +46,7 @@ class Attack(pygame.sprite.Sprite):
                 self.hantei = True
                 
             #アニメーションの再生　再生は一回限り
-            if self.count <= self.anime_seq[0]:
-                self.image = self.animes[0]
-            elif self.count >= sum(self.anime_seq):
-                self.image = self.animes[-1]
-            else:
-                hoge = 0
-                for num in range(len(self.anime_seq)):
-                    hoge += self.anime_seq[num]
-                    if hoge > self.count:
-                        self.image = self.animes[num]
-                        break
+            self.image, end = anime_play(self.animes,self.anime_seq,self.count) 
                     
                 
             if self.count >= self.f_frame:
