@@ -86,7 +86,7 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player1/club9.png"),
                       pygame.image.load("./assets/Player1/club10.png"),
                       pygame.image.load("./assets/Player1/club11.png")]
-            rect = pygame.Rect(-10,50,100,100)
+            rect = pygame.Rect(-10,70,100,100)
         else:
             animes = [pygame.image.load("./assets/Player2/club0.png"),
                       pygame.image.load("./assets/Player2/club1.png"),
@@ -100,7 +100,7 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player2/club9.png"),
                       pygame.image.load("./assets/Player2/club10.png"),
                       pygame.image.load("./assets/Player2/club11.png")]
-            rect = pygame.Rect(0,0,100,100)
+            rect = pygame.Rect(0,30,100,100)
     elif idnum == 3:#プレイヤーの怯み
         if(Player1 == True):
             animes = [pygame.image.load("./assets/Player1/hirumi1.png"),
@@ -112,6 +112,40 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player2/hirumi2.png"),
                       pygame.image.load("./assets/Player2/hirumi3.png")]
             rect = pygame.Rect(1050,400,100,100)
+            
+    elif idnum == 4:#プレイヤーの影絵出すアニメ
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/Player1/boy_hand_0.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_1.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_2.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_3.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_4.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_5.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_6.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_7.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_8.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_9.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_10.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_11.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_12.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_13.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/girl_hand_0000.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0001.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0002.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0003.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0004.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0005.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0006.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0007.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0008.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0009.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0010.png"),
+                      pygame.image.load("./assets/Player2/girl_hand_0011.png"),
+                      ]
+            rect = pygame.Rect(0,-20,100,100)
     
     return animes, rect
 
