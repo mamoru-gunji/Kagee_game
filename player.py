@@ -24,35 +24,37 @@ class Player(pygame.sprite.Sprite):
         self.hirumi_init = True #怯み処理の初期化
         self.excute = False#これがTrueのとき影絵出すアニメ再生
         self.excute_init = True #影絵出す処理の初期化
-        self.hirumi_seq = [10,10,40]#怯みアニメのフレーム配分。これらの合計が怯み時間となる。
-        self.norm_seq = [5,5,5,5,5,5,5,5,5,5,5,5]
+        self.hirumi_seq = [1,1,1,2,1,1,1,3,3,3,3,35]#怯みアニメのフレーム配分。これらの合計が怯み時間となる。
+        
+        
+        self.death = False
+        self.death_init = True
+        self.death_seq = [8,8,8,8,8,8,8,8,8,8,8,8]
+        
+        self.finish = False
         
         #アニメ画像の登録
         self.norm_animes, self.rect = anim_dic(Player1, 0)
         self.hirumi_animes, self.rect1 = anim_dic(Player1, 3)
         self.excute_animes, rec = anim_dic(Player1,4)
+        self.death_animes, rec= anim_dic(Player1,12)
         
         #両プレイヤーで値が違う場合
         if Player1 == True:
             self.excute_seq = [0,1,1,1,1,1,1,1,1,1,1,1,1,15]
+            self.norm_seq = [15,15,15,15]
         else:
             self.excute_seq = [0,0,0,1,1,1,1,1,1,1,1,15]
+            self.norm_seq = [5,5,5,5,5,5,5,5,5,5,5,5]
         
             
         #アニメ画像の変形
         #for num in range(len(self.norm_animes)):
             #self.norm_animes[num] = pygame.transform.scale(self.norm_animes[num], (250, 250))
         
-        for num in range(len(self.hirumi_animes)):
-            self.hirumi_animes[num] = pygame.transform.scale(self.hirumi_animes[num], (150, 250))
             
-        hoge = len(self.norm_animes)
-        for num in range(hoge - 2):
-            self.norm_animes.append(self.norm_animes[-2 - num])
             
-        
-        
-        
+
         
         
         
@@ -70,7 +72,7 @@ class Player(pygame.sprite.Sprite):
                 #怯みの正常終了
                  self.hirumi = False
                  self.hirumi_init = True
-                 self.hirumi_seq[-1] = 40#怯み時間を正常化
+                 self.hirumi_seq[-1] = 35#怯み時間を正常化
                  
             
         elif self.excute == True:
@@ -85,8 +87,18 @@ class Player(pygame.sprite.Sprite):
                 #影絵出しの正常終了
                  self.excute = False
                  self.excute_init = True
+                 self.excute_seq[-1] = 15
                  
+        elif self.death == True:
+            if self.death_init == True:
+                self.death_init = False
+                self.update_count = 0
+                
+             #アニメーションの再生　再生は一回限り
+            self.image, end = anime_play(self.death_animes,self.death_seq,self.update_count)
             
+            if self.update_count >= sum(self.death_seq):
+                self.finish = True
         
         else:
             #アニメ管理 (立ち姿)

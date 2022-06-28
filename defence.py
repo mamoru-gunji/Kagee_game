@@ -11,7 +11,7 @@ from anim_dic import anime_play
 
 class Defence(pygame.sprite.Sprite):
     
-    def __init__(self, Player1: bool, animeid, hantei_term, anime_seq, loop_seq):
+    def __init__(self, Player1: bool, animeid, hantei_term, anime_seq):
         pygame.sprite.Sprite.__init__(self)
         
         self.active = False #これがTrueだとコマンドが開始する合図になる
@@ -23,19 +23,42 @@ class Defence(pygame.sprite.Sprite):
         self.fin = False #正常終了を外部に伝えるためのbool
         self.hantei = False #判定発生を外部に伝えるためのbool
         self.anime_seq = anime_seq #それぞれのアニメフレームの継続フレーム数を記述したリスト　アニメの枚数と同じでなければならない
-        self.loop_seq = loop_seq #ループアニメ
+
+        #カニの死亡
+        self.death = False
+        self.death_init = True
+        self.death_seq = [3,3,3,3,3,3,3,3,3,3,3,3]
         
         self.invisible = pygame.image.load("./assets/invisible.png")
         
         #アニメ画像の登録
         self.animes, self.rect = anim_dic(Player1,animeid)
+        self.death_animes,rec = anim_dic(Player1,14)
             
     def update(self):
-        if self.active == True:
+        
+        if self.death == True:
+            if self.death_init == True:
+                self.count = 0
+                self.hantei = False 
+                self.init = True
+                self.active =False
+                self.death_init = False
+                
+            #アニメーションの再生　再生は一回限り
+            
+            self.image, end = anime_play(self.death_animes,self.death_seq,self.count) 
+            
+            if self.count >= sum(self.death_seq):
+                self.death = False
+                self.death_init = True
+        
+        
+        
+        elif self.active == True:
             #開始時初期化処理
             if self.init == True:
-                self.count = 0
-                self.fin = False 
+                self.count = 0 
                 self.hantei = False 
                 self.init = False
                 
@@ -44,21 +67,12 @@ class Defence(pygame.sprite.Sprite):
                 self.hantei = True
                 
             #アニメーションの再生　再生は一回限り
-            if self.count > sum(self.anime_seq):
-                self.image, end = anime_play(self.animes,self.loop_seq,self.count,True)
-            else:
             
-                self.image, end = anime_play(self.animes,self.anime_seq,self.count) 
+            self.image, end = anime_play(self.animes,self.anime_seq,self.count) 
                     
                 
-            
-                
-
-            
-        
-        
-            #開始時より時間軸管理のためのカウント増加
-            self.count += 1
-            
+             
         else:
             self.image = self.invisible
+            
+        self.count += 1

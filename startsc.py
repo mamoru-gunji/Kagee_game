@@ -28,9 +28,33 @@ def show_start_screen(screen: pygame.Surface,background :pygame.image):
                 return
             if event.type != pygame.KEYDOWN:
                 continue
-            if event.key == ord('q'):
-                return
             elif event.key == ord('s'):
                 print('S')
+                return
+        clock.tick(60)
+        
+def show_finish_screen(screen,finish):
+    font = pygame.font.Font(None, 70)
+
+
+
+    clock = pygame.time.Clock()
+
+    if finish == True:
+        text = font.render("2Pwin!", True, (250, 50, 50))
+    else:
+        text = font.render("1Pwin!", True, (250, 50, 50))
+        
+    screen.blit(text, (600, 300))
+
+    pygame.display.update()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+            if event.type != pygame.KEYDOWN:
+                continue
+            elif event.key == ord('s'):
                 return
         clock.tick(60)
