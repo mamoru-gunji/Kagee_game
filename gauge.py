@@ -42,16 +42,16 @@ class Hp(pygame.sprite.Sprite):
                 self.prehp2 -= 0.50
             
             if self.Player1 == True:
-                a = 100 + (int)(self.hp * 4)
-                b = 100
+                a = 105 + (int)(self.hp * 3.3)
+                b = 38
                 c = self.yellowlength
-                d = 40
+                d = 50
                 
             else:
-                a = (int)(800 + 4 * (100 - self.prehp2))
-                b = 100
+                a = (int)(849 + 3.3 * (100 - self.prehp2))
+                b = 38
                 c = self.yellowlength
-                d = 40
+                d = 50
                 
             pygame.draw.rect(self.screen, (255,255,100), pygame.Rect(a,b,c,d), width=0)
             
@@ -60,16 +60,16 @@ class Hp(pygame.sprite.Sprite):
                 
         
         if self.Player1 == True:
-            a = 100
-            b = 100
-            c = (int)(self.hp * 4)
-            d = 40
+            a = 105
+            b = 38
+            c = (int)(self.hp * 3.3)
+            d = 50
             
         else:
-            a = (int)(800 + 4 * (100 - self.hp))
-            b = 100
-            c = (int)(self.hp * 4)
-            d = 40
+            a = (int)(849 + 3.3 * (100 - self.hp))
+            b = 38
+            c = (int)(self.hp * 3.3)
+            d = 50
             
         pygame.draw.rect(self.screen, (255,0,0), pygame.Rect(a,b,c,d), width=0)
             
@@ -92,16 +92,16 @@ class Hissatsu(pygame.sprite.Sprite):
             self.value = self.max_value
         
         if self.Player1 == True:
-            a = 300
-            b = 200
-            c = (int)(self.value * 2)
-            d = 5
+            a = 98
+            b = 140
+            c = (int)(self.value * 2.51)
+            d = 35
             
         else:
-            a = (int)(800 + 2 * (100 - self.value))
-            b = 200
-            c = (int)(self.value * 2)
-            d = 5
+            a = (int)(939 + 2.51 * (100 - self.value))
+            b = 140
+            c = (int)(self.value * 2.51)
+            d = 35
          
         if self.value == self.max_value:
             if (self.count % 20) >= 10:

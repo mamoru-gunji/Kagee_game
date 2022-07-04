@@ -41,7 +41,7 @@ class Player(pygame.sprite.Sprite):
         
         #両プレイヤーで値が違う場合
         if Player1 == True:
-            self.excute_seq = [0,1,1,1,1,1,1,1,1,1,1,1,1,15]
+            self.excute_seq = [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15]
             self.norm_seq = [15,15,15,15]
         else:
             self.excute_seq = [0,0,0,1,1,1,1,1,1,1,1,15]

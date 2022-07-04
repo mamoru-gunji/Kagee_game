@@ -51,16 +51,16 @@ class Partner(pygame.sprite.Sprite):
             
             self.attack_animes, self.rect1 = anim_dic(Player1, 5)
             
-            self.attack_seq = [40,0,2,2,2,2,2,2,2,2,2,2] #attackするときのアニメのフレーム数割り当て
+            self.attack_seq = [50,0,4,4,4,3,4,4,3,3,3,3] #attackするときのアニメのフレーム数割り当て
             self.dog_atk = Dog_atk(0,50)
-            self.dog_atk1 = Dog_atk(-220,50)
+            self.dog_atk1 = Dog_atk(-270,50)
             
             self.trans_seq = [60,3,3,3,4,4,4,4,7,7,1,1,1,1,4,4,5,5,4,3,3,3,3,12]
             
         
         else:
             self.attack_animes, self.rect1 = anim_dic(True, 11)
-            self.attack_seq = [3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3] #attackするときのアニメのフレーム数割り当て
+            self.attack_seq = [4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,3,3,3,3,3,3] #attackするときのアニメのフレーム数割り当て
             
             self.eagle_atk = Eagle_atk(0,0)
             self.eagle_atk1 = Eagle_atk(220,0)
@@ -101,7 +101,7 @@ class Partner(pygame.sprite.Sprite):
                 if self.update_count == 42:
                     self.dog_se.play()
                     
-                if self.update_count == 54:
+                if self.update_count == 69:
                     if self.crab == False:
                         
                         self.dog_atk.active = True
@@ -115,7 +115,7 @@ class Partner(pygame.sprite.Sprite):
                     self.attack_init = True
                     
             else:
-                if self.update_count == 44:
+                if self.update_count == 59:
                     if self.crab == False:
                         
                         self.eagle_atk.active = True

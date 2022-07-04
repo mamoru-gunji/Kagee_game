@@ -6,6 +6,8 @@ Created on Sun Jun  5 18:13:21 2022
 """
 
 import pygame
+import warnings
+warnings.filterwarnings('ignore')
 
 #これはアニメーションデータをしまっている関数です。ここにアニメーションを登録します。idで管理されるのでどれがどのアニメか把握する必要あり
 
@@ -50,19 +52,19 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player1/dog_0011.png"),]
             rect = pygame.Rect(0,0,100,100)
         else:
-            animes = [pygame.image.load("./assets/Player2/part0.png"),
-                      pygame.image.load("./assets/Player2/part1.png"),
-                      pygame.image.load("./assets/Player2/part1.png"),
-                      pygame.image.load("./assets/Player2/part2.png"),
-                      pygame.image.load("./assets/Player2/part3.png"),
-                      pygame.image.load("./assets/Player2/part4.png"),
-                      pygame.image.load("./assets/Player2/part5.png"),
-                      pygame.image.load("./assets/Player2/part6.png"),
-                      pygame.image.load("./assets/Player2/part7.png"),
-                      pygame.image.load("./assets/Player2/part8.png"),
-                      pygame.image.load("./assets/Player2/part9.png"),
-                      pygame.image.load("./assets/Player2/part10.png"),
-                      pygame.image.load("./assets/Player2/part11.png"),]
+            animes = [pygame.image.load("./assets/Player2/eagle_0000.png"),
+                      pygame.image.load("./assets/Player2/eagle_0001.png"),
+                      pygame.image.load("./assets/Player2/eagle_0001.png"),
+                      pygame.image.load("./assets/Player2/eagle_0002.png"),
+                      pygame.image.load("./assets/Player2/eagle_0003.png"),
+                      pygame.image.load("./assets/Player2/eagle_0004.png"),
+                      pygame.image.load("./assets/Player2/eagle_0005.png"),
+                      pygame.image.load("./assets/Player2/eagle_0006.png"),
+                      pygame.image.load("./assets/Player2/eagle_0007.png"),
+                      pygame.image.load("./assets/Player2/eagle_0008.png"),
+                      pygame.image.load("./assets/Player2/eagle_0009.png"),
+                      pygame.image.load("./assets/Player2/eagle_0010.png"),
+                      pygame.image.load("./assets/Player2/eagle_0011.png"),]
             rect = pygame.Rect(0,0,100,100)
     elif idnum == 2:#カニの出現
         if(Player1 == True):
@@ -92,7 +94,7 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player2/club_0009.png"),
                       pygame.image.load("./assets/Player2/club_0010.png"),
                       pygame.image.load("./assets/Player2/club_0011.png")]
-            rect = pygame.Rect(50,0,100,100)
+            rect = pygame.Rect(0,0,100,100)
     elif idnum == 3:#プレイヤーの怯み
         if(Player1 == True):
             animes = [pygame.image.load("./assets/Player1/boy_damage_0000.png"),
@@ -127,20 +129,24 @@ def anim_dic(Player1: bool, idnum):
             
     elif idnum == 4:#プレイヤーの影絵出すアニメ
         if(Player1 == True):
-            animes = [pygame.image.load("./assets/Player1/boy_hand_0.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_1.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_2.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_3.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_4.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_5.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_6.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_7.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_8.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_9.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_10.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_11.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_12.png"),
-                      pygame.image.load("./assets/Player1/boy_hand_13.png")
+            animes = [pygame.image.load("./assets/Player1/boy_hand_0000.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0001.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0002.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0003.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0004.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0005.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0006.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0007.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0008.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0009.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0010.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0011.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0012.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0013.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0014.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0015.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0016.png"),
+                      pygame.image.load("./assets/Player1/boy_hand_0017.png")
                       ]
             rect = pygame.Rect(0,0,100,100)
         else:
@@ -161,18 +167,18 @@ def anim_dic(Player1: bool, idnum):
             
     elif idnum == 5:#dogの強攻撃
         if(Player1 == True):#ハイド
-                animes = [pygame.image.load("./assets/Player1/dog_hide2_0000.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0001.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0002.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0003.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0004.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0005.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0006.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0007.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0008.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0009.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0010.png"),
-                          pygame.image.load("./assets/Player1/dog_hide2_0011.png")
+                animes = [pygame.image.load("./assets/Player1/dog_hide_0000.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0001.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0002.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0003.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0004.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0005.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0006.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0007.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0008.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0009.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0010.png"),
+                          pygame.image.load("./assets/Player1/dog_hide_0011.png")
                           ]
                 rect = pygame.Rect(0,0,100,100)
         else:#アタック
@@ -275,17 +281,17 @@ def anim_dic(Player1: bool, idnum):
                       ]
             rect = pygame.Rect(50,0,100,100)
         else:
-            animes = [pygame.image.load("./assets/Player1/dog_atack_0000.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0001.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0002.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0003.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0004.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0005.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0006.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0007.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0008.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0009.png"),
-                      pygame.image.load("./assets/Player1/dog_atack_0010.png")]
+            animes = [pygame.image.load("./assets/Player1/dog_attack_0000.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0001.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0002.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0003.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0004.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0005.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0006.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0007.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0008.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0009.png"),
+                      pygame.image.load("./assets/Player1/dog_attack_0010.png")]
             rect = pygame.Rect(0,0,100,100)
             
     elif idnum == 9:#エフェクト　防御と
@@ -464,7 +470,7 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player2/eagle_strong_0022.png"),
                       pygame.image.load("./assets/Player2/eagle_strong_0023.png")
                       ]
-            rect = pygame.Rect(0,0,100,100)
+            rect = pygame.Rect(-30,0,100,100)
     
     elif idnum == 12:#プレイヤー死亡
         if(Player1 == True):#防御
@@ -545,18 +551,18 @@ def anim_dic(Player1: bool, idnum):
                       ]
             rect = pygame.Rect(0,0,100,100)
         else:
-            animes = [pygame.image.load("./assets/Player2/crub_death_0000.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0001.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0002.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0003.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0004.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0005.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0006.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0007.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0008.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0009.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0010.png"),
-                      pygame.image.load("./assets/Player2/crub_death_0011.png")]
+            animes = [pygame.image.load("./assets/Player2/crub_death_l_0000.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0001.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0002.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0003.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0004.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0005.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0006.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0007.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0008.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0009.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0010.png"),
+                      pygame.image.load("./assets/Player2/crub_death_l_0011.png")]
             rect = pygame.Rect(0,0,100,100)
             
             
@@ -749,6 +755,397 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player2/aptrx_strong_0039.png"),
                       pygame.image.load("./assets/Player2/aptrx_strong_0040.png"),
                       pygame.image.load("./assets/Player2/aptrx_strong_0041.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+            
+    elif idnum == 18:#うさぎ
+        if(Player1 == True):#背景
+            animes = [pygame.image.load("./assets/Player1/rabbit_0000.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0001.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0002.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0003.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0004.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0005.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0006.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0007.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0008.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0009.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0010.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0011.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0012.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0013.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0014.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0015.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0016.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0017.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0018.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0019.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0020.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0021.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0022.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0023.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0024.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0025.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0026.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0027.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0028.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0029.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0030.png"),
+                      pygame.image.load("./assets/Player1/rabbit_0031.png"),
+                      pygame.image.load("./assets/Player1/rabbit_a_0000.png")        
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/rabbit_l_0000.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0001.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0002.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0003.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0004.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0005.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0006.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0007.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0008.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0009.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0010.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0011.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0012.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0013.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0014.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0015.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0016.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0017.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0018.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0019.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0020.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0021.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0022.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0023.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0024.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0025.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0026.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0027.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0028.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0029.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0030.png"),
+                      pygame.image.load("./assets/Player2/rabbit_l_0031.png"),
+                      pygame.image.load("./assets/Player2/rabbit_a_l_0000.png") 
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+    elif idnum == 19:#owla
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/Player1/owl_a_0000.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0001.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0002.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0003.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0004.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0005.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0006.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0007.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0008.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0009.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0010.png"),
+                      pygame.image.load("./assets/Player1/owl_a_0011.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/owl_a_l_0000.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0001.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0002.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0003.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0004.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0005.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0006.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0007.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0008.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0009.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0010.png"),
+                      pygame.image.load("./assets/Player2/owl_a_l_0011.png")]
+            rect = pygame.Rect(0,0,100,100)
+    elif idnum == 20:#owlb
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/Player1/owl_b_0000.png"),
+                      pygame.image.load("./assets/Player1/owl_b_0001.png"),
+                      pygame.image.load("./assets/Player1/owl_b_0002.png"),
+                      pygame.image.load("./assets/Player1/owl_b_0003.png"),
+                      pygame.image.load("./assets/Player1/owl_b_0004.png"),
+                      pygame.image.load("./assets/Player1/owl_b_0005.png"),
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/owl_b_l_0000.png"),
+                      pygame.image.load("./assets/Player2/owl_b_l_0001.png"),
+                      pygame.image.load("./assets/Player2/owl_b_l_0002.png"),
+                      pygame.image.load("./assets/Player2/owl_b_l_0003.png"),
+                      pygame.image.load("./assets/Player2/owl_b_l_0004.png"),
+                      pygame.image.load("./assets/Player2/owl_b_l_0005.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+    elif idnum == 21:#owlhit
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/Player1/owl_hit_0000.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0001.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0002.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0003.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0004.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0005.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0006.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0007.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0008.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0009.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0010.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0011.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0012.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0013.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0014.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0015.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0016.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0017.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0018.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0019.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0020.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0021.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0022.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0023.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0024.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0025.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0026.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0027.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0028.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0029.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0030.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0031.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0032.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0033.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0034.png"),
+                      pygame.image.load("./assets/Player1/owl_hit_0035.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/owl_hit_l_0000.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0001.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0002.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0003.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0004.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0005.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0006.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0007.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0008.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0009.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0010.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0011.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0012.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0013.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0014.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0015.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0016.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0017.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0018.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0019.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0020.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0021.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0022.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0023.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0024.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0025.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0026.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0027.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0028.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0029.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0030.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0031.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0032.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0033.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0034.png"),
+                      pygame.image.load("./assets/Player2/owl_hit_l_0035.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+    elif idnum == 22:#owlmiss
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/Player1/owl_miss_0000.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0001.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0002.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0003.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0004.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0005.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0006.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0007.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0008.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0009.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0010.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0011.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0012.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0013.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0014.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0015.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0016.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0017.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0018.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0019.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0020.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0021.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0022.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0023.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0024.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0025.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0026.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0027.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0028.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0029.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0030.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0031.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0032.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0033.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0034.png"),
+                      pygame.image.load("./assets/Player1/owl_miss_0035.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/owl_miss_l_0000.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0001.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0002.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0003.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0004.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0005.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0006.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0007.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0008.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0009.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0010.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0011.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0012.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0013.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0014.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0015.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0016.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0017.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0018.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0019.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0020.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0021.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0022.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0023.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0024.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0025.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0026.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0027.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0028.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0029.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0030.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0031.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0032.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0033.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0034.png"),
+                      pygame.image.load("./assets/Player2/owl_miss_l_0035.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+    elif idnum == 23:#とびら
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/cut_general_0000.png"),
+                      pygame.image.load("./assets/cut_general_0001.png"),
+                      pygame.image.load("./assets/cut_general_0002.png"),
+                      pygame.image.load("./assets/cut_general_0003.png"),
+                      pygame.image.load("./assets/cut_general_0004.png"),
+                      pygame.image.load("./assets/cut_general_0005.png"),
+                      pygame.image.load("./assets/cut_general_0006.png"),
+                      pygame.image.load("./assets/cut_general_0007.png"),
+                      pygame.image.load("./assets/cut_general_0008.png"),
+                      pygame.image.load("./assets/cut_general_0009.png"),
+                      pygame.image.load("./assets/cut_general_0010.png"),
+                      pygame.image.load("./assets/cut_general_0011.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/cut_general_0011.png"),
+                      pygame.image.load("./assets/cut_general_0010.png"),
+                      pygame.image.load("./assets/cut_general_0009.png"),
+                      pygame.image.load("./assets/cut_general_0008.png"),
+                      pygame.image.load("./assets/cut_general_0007.png"),
+                      pygame.image.load("./assets/cut_general_0006.png"),
+                      pygame.image.load("./assets/cut_general_0005.png"),
+                      pygame.image.load("./assets/cut_general_0004.png"),
+                      pygame.image.load("./assets/cut_general_0003.png"),
+                      pygame.image.load("./assets/cut_general_0002.png"),
+                      pygame.image.load("./assets/cut_general_0001.png"),
+                      pygame.image.load("./assets/cut_general_0000.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+    elif idnum == 24:#win
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/Player1/boy_win_0000.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0001.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0002.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0003.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0004.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0005.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0006.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0007.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0008.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0009.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0010.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0011.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0012.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0013.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0014.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0015.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0016.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0017.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0018.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0019.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0020.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0021.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0022.png"),
+                      pygame.image.load("./assets/Player1/boy_win_0023.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/girl_win_0000.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0001.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0002.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0003.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0004.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0005.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0006.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0007.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0008.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0009.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0010.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0011.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0012.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0013.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0014.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0015.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0016.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0017.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0018.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0019.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0020.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0021.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0022.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0023.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0024.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0025.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0026.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0027.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0028.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0029.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0030.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0031.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0032.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0033.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0034.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0035.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0036.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0037.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0038.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0039.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0040.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0041.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0042.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0043.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0044.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0045.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0046.png"),
+                      pygame.image.load("./assets/Player2/girl_win_0047.png")
                       ]
             rect = pygame.Rect(0,0,100,100)
             

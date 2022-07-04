@@ -8,6 +8,8 @@ Created on Tue Jun 14 01:04:22 2022
 import pygame
 from anim_dic import anim_dic
 from anim_dic import anime_play
+import warnings
+warnings.filterwarnings('ignore')
 
 class Cutin(pygame.sprite.Sprite):
     
@@ -30,15 +32,20 @@ class Cutin(pygame.sprite.Sprite):
                            pygame.image.load("./assets/Player1/dog.png"),
                            pygame.image.load("./assets/Player1/elephant.png"),
                            pygame.image.load("./assets/Player1/eagle.png"),
-                           pygame.image.load("./assets/Player1/dog.png")
+                           pygame.image.load("./assets/Player1/dog.png"),
+                           pygame.image.load("./assets/Player1/rabbit.png"),
+                           pygame.image.load("./assets/Player1/owl.png")
                            ]
             
             self.voices = [pygame.mixer.Sound("./assets/se/crab1.wav"),
                            pygame.mixer.Sound("./assets/se/dog1.wav"),
                            pygame.mixer.Sound("./assets/se/elephant1.wav"),
                            pygame.mixer.Sound("./assets/se/eagle1.wav"),
-                           pygame.mixer.Sound("./assets/se/wolf1.wav")]
-            a=200
+                           pygame.mixer.Sound("./assets/se/wolf1.wav"),
+                           pygame.mixer.Sound("./assets/se/rabbit1.wav"),
+                           pygame.mixer.Sound("./assets/se/owl1.wav"),
+                           ]
+            a=300
             b=380
             self.rect = pygame.Rect(a,b,300,500)
             
@@ -47,14 +54,19 @@ class Cutin(pygame.sprite.Sprite):
                            pygame.image.load("./assets/Player2/dog.png"),
                            pygame.image.load("./assets/Player2/elephant.png"),
                            pygame.image.load("./assets/Player2/eagle.png"),
-                           pygame.image.load("./assets/Player2/eagle.png")]
+                           pygame.image.load("./assets/Player2/eagle.png"),
+                           pygame.image.load("./assets/Player2/rabbit.png"),
+                           pygame.image.load("./assets/Player2/owl.png")]
             
             self.voices = [pygame.mixer.Sound("./assets/se/crab2.wav"),
                            pygame.mixer.Sound("./assets/se/dog2.wav"),
                            pygame.mixer.Sound("./assets/se/elephant2.wav"),
                            pygame.mixer.Sound("./assets/se/eagle2.wav"),
-                           pygame.mixer.Sound("./assets/se/archaeopteryx.wav")]
-            a=950
+                           pygame.mixer.Sound("./assets/se/archaeopteryx.wav"),
+                           pygame.mixer.Sound("./assets/se/rabbit2.wav"),
+                           pygame.mixer.Sound("./assets/se/owl2.wav"),
+                           ]
+            a=850
             b=380
             self.rect = pygame.Rect(a,b,300,500)
             

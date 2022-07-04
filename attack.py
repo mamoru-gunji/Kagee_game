@@ -9,6 +9,8 @@ import pygame
 from anim_dic import anim_dic
 from anim_dic import anime_play
 from cutin import Effect
+import warnings
+warnings.filterwarnings('ignore')
 
 class Attack(pygame.sprite.Sprite):
     
@@ -216,7 +218,7 @@ class Eagle_atk(pygame.sprite.Sprite):
         #self.f_hantei = hantei_term#引数で指定する判定の発生時間
         self.fin = False #正常終了を外部に伝えるためのbool
         self.hantei = False #判定発生を外部に伝えるためのbool
-        self.anime_seq = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0] #鷲がでてくるアニメの設定
+        self.anime_seq = [4,4,4,4,4,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0] #鷲がでてくるアニメの設定
         self.se = pygame.mixer.Sound("./assets/se/nail.wav")
         
         self.invisible = pygame.image.load("./assets/invisible.png")
@@ -240,7 +242,7 @@ class Eagle_atk(pygame.sprite.Sprite):
             #アニメーションの再生　再生は一回限り
             self.image, end = anime_play(self.animes,self.anime_seq,self.count) 
             
-            if self.count == 12:
+            if self.count == 22:
                #self.effect.active = True
                self.hantei = True
                self.se.play()
@@ -309,6 +311,10 @@ class Hissatsu2(pygame.sprite.Sprite):
                     self.hantei[2] = True
                     self.se[4].play()
                     self.se[1].play()
+            else:
+                if self.count == self.keisu * 56:
+                    self.hantei[0] = True
+                    
             if self.count >= sum(self.seq):
                 self.active = False
                 self.init = True
@@ -316,4 +322,155 @@ class Hissatsu2(pygame.sprite.Sprite):
         else:
             self.image = self.invisible
         
+        self.count += 1
+        
+        
+class Rabbit(pygame.sprite.Sprite):
+    
+    def __init__(self, Player1):
+        pygame.sprite.Sprite.__init__(self)
+        
+        self.active = False #これがTrueだと攻撃が開始する合図になる
+        self.init = True
+        self.count = 0
+        self.active2 = False
+        self.hantei = False
+        
+
+        self.anime_seq = [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,240] #usagiがでてくるアニメの設定
+
+        
+        self.invisible = pygame.image.load("./assets/invisible.png")
+        
+        #アニメ画像の登録
+        self.animes, self.rect = anim_dic(Player1,18)
+        
+            
+    def update(self):
+        if self.active == True or self.active2 == True:
+            #開始時初期化処理
+            if self.init == True:
+                self.count = 0
+                self.active2 = False 
+                self.hantei = False
+                self.init = False
+                
+            #判定発生
+            #if self.count == self.f_hantei:
+               # self.hantei = True
+                
+            #アニメーションの再生　再生は一回限り
+            self.image, end = anime_play(self.animes,self.anime_seq,self.count) 
+            
+            if self.count == 90:
+               #self.effect.active = True
+               self.active2 = True
+               self.hantei = True
+               #self.se.play()
+                
+            if self.count >= sum(self.anime_seq):
+                #正常終了
+                self.active = False
+                self.active2 = False
+                self.init = True
+                
+                return
+        else:
+            self.image = self.invisible
+            
+        self.count += 1
+        
+class Owl(pygame.sprite.Sprite):
+    
+    def __init__(self, Player1):
+        pygame.sprite.Sprite.__init__(self)
+        
+        self.active = False #これがTrueだと攻撃が開始する合図になる
+        self.init = True
+        self.count = 0
+        self.active2 = False
+        self.active3 = False
+        self.hantei = False
+        self.crab = False
+
+        self.anime_seq = [3,3,3,3,3,3,3,3,3,3,3,3] #usagiがでてくるアニメの設定
+        self.anime_seql = [10,10,10,10,10,10]
+        self.anime_seqf = [3,2,3,2,
+                           3,2,3,2,
+                           3,2,3,2,
+                           3,2,3,2,
+                           3,2,3,2,
+                           3,2,3,2,
+                           3,2,3,2,
+                           3,2,3,2,
+                           3,2,3,2]
+
+        self.voice = pygame.mixer.Sound("./assets/se/owl.wav")
+        self.invisible = pygame.image.load("./assets/invisible.png")
+        
+        #アニメ画像の登録
+        self.animes, self.rect = anim_dic(Player1,19)
+        self.animesl, rec = anim_dic(Player1,20)
+        self.animesf, rec = anim_dic(Player1,21)
+        self.animesfc, rec = anim_dic(Player1,22)
+        
+            
+    def update(self):
+        if self.active == True:
+            #開始時初期化処理
+            if self.init == True:
+                self.count = 0
+                self.active2 = False 
+                self.active3 = False
+                self.hantei = False
+                self.init = False
+                
+                
+                
+            #判定発生
+            #if self.count == self.f_hantei:
+               # self.hantei = True
+                
+            #アニメーションの再生　再生は一回限り
+            self.image, end = anime_play(self.animes,self.anime_seq,self.count) 
+            
+
+                
+            if self.count >= sum(self.anime_seq):
+                #正常終了
+                self.active = False
+                self.active2 = True
+                self.count = 0
+                self.init = True
+                self.voice.play()
+                
+                return
+        elif self.active2 == True:
+            
+            #アニメーションの再生　再生は一回限り
+            self.image, end = anime_play(self.animesl,self.anime_seql,self.count, True)
+            
+            if self.count == 240:
+                #正常終了
+                self.active3 = True
+                self.active2 = False
+                self.count = 0
+        elif self.active3 == True:
+            
+            if self.crab == True:
+                self.image, end = anime_play(self.animesfc,self.anime_seqf,self.count)
+            else:
+                self.image, end = anime_play(self.animesf,self.anime_seqf,self.count)
+            
+            if self.count == 17 or self.count == 25 or self.count == 32 or self.count == 40 or self.count == 47  or self.count == 57 or self.count == 65 or self.count == 75 or self.count == 80:
+                self.hantei = True
+                
+            if self.count >= sum(self.anime_seqf):
+                #正常終了
+
+                self.active3 = False
+                self.init = True
+        else:
+            self.image = self.invisible
+            
         self.count += 1
