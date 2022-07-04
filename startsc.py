@@ -179,7 +179,7 @@ def show_finish_screen(screen,finish, op, doorgroup, win1, win2):
     wingroup.add(win)
     op.active = True
     while True:
-        clock.tick(60)
+        clock.tick(40)
         wingroup.update()
         wingroup.draw(screen)
         doorgroup.update()
