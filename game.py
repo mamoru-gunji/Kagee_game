@@ -271,11 +271,11 @@ def main():
             # ESCキーが押されたら終了
             if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_ESCAPE):
                 game_end = True
-            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_a):
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_s):
                 first_partnerf.active = True
                 first_playerf.excute = True
                 first_dogcutin.active = True
-            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_s):
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_l):
                 second_partnerf.active = True
                 second_playerf.excute = True
                 second_eaglecutin.active = True
