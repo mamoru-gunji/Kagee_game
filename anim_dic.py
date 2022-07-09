@@ -294,33 +294,36 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player1/dog_attack_0010.png")]
             rect = pygame.Rect(0,0,100,100)
             
-    elif idnum == 9:#エフェクト　防御と
+    elif idnum == 9:#エフェクト　防御
         if(Player1 == True):#防御
-            animes = [pygame.image.load("./assets/ef/deffence/effect_01.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_02.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_03.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_04.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_05.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_06.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_07.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_08.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_09.png"),
-                      pygame.image.load("./assets/ef/deffence/effect_10.png"),
+            animes = [pygame.image.load("./assets/ef/defend_0000.png"),
+                      pygame.image.load("./assets/ef/defend_0001.png"),
+                      pygame.image.load("./assets/ef/defend_0002.png"),
+                      pygame.image.load("./assets/ef/defend_0003.png"),
+                      pygame.image.load("./assets/ef/defend_0004.png"),
+                      pygame.image.load("./assets/ef/defend_0005.png"),
+                      pygame.image.load("./assets/ef/defend_0006.png"),
+                      pygame.image.load("./assets/ef/defend_0007.png"),
+                      pygame.image.load("./assets/ef/defend_0008.png"),
+                      pygame.image.load("./assets/ef/defend_0009.png"),
+                      pygame.image.load("./assets/ef/defend_0010.png"),
+                      
                       ]
-            rect = pygame.Rect(50,0,100,100)
+            rect = pygame.Rect(0,0,100,100)
         else:
-            animes = [pygame.image.load("./assets/Player2/elephant_0000.png"),
-                      pygame.image.load("./assets/Player2/elephant_0001.png"),
-                      pygame.image.load("./assets/Player2/elephant_0002.png"),
-                      pygame.image.load("./assets/Player2/elephant_0003.png"),
-                      pygame.image.load("./assets/Player2/elephant_0004.png"),
-                      pygame.image.load("./assets/Player2/elephant_0005.png"),
-                      pygame.image.load("./assets/Player2/elephant_0006.png"),
-                      pygame.image.load("./assets/Player2/elephant_0007.png"),
-                      pygame.image.load("./assets/Player2/elephant_0008.png"),
-                      pygame.image.load("./assets/Player2/elephant_0009.png"),
-                      pygame.image.load("./assets/Player2/elephant_0010.png"),
-                      pygame.image.load("./assets/Player2/elephant_0011.png")]
+            animes = [pygame.image.load("./assets/ef/defend_l_0000.png"),
+                      pygame.image.load("./assets/ef/defend_l_0001.png"),
+                      pygame.image.load("./assets/ef/defend_l_0002.png"),
+                      pygame.image.load("./assets/ef/defend_l_0003.png"),
+                      pygame.image.load("./assets/ef/defend_l_0004.png"),
+                      pygame.image.load("./assets/ef/defend_l_0005.png"),
+                      pygame.image.load("./assets/ef/defend_l_0006.png"),
+                      pygame.image.load("./assets/ef/defend_l_0007.png"),
+                      pygame.image.load("./assets/ef/defend_l_0008.png"),
+                      pygame.image.load("./assets/ef/defend_l_0009.png"),
+                      pygame.image.load("./assets/ef/defend_l_0010.png"),
+                      
+                      ]
             rect = pygame.Rect(0,0,100,100)
             
     elif idnum == 10:#必殺技の変身
@@ -568,33 +571,22 @@ def anim_dic(Player1: bool, idnum):
             
     elif idnum == 15:#パートナー誕生
         if(Player1 == True):#防御
-            animes = [pygame.image.load("./assets/Player1/dog_death_kari_0011.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0010.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0009.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0008.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0007.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0006.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0005.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0004.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0003.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0002.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0001.png"),
-                      pygame.image.load("./assets/Player1/dog_death_kari_0000.png")
+            animes = [pygame.image.load("./assets/Player1/dog_appear_0000.png"),
+                      pygame.image.load("./assets/Player1/dog_appear_0001.png"),
+                      pygame.image.load("./assets/Player1/dog_appear_0002.png"),
+                      pygame.image.load("./assets/Player1/dog_appear_0003.png"),
+                      pygame.image.load("./assets/Player1/dog_appear_0004.png"),
+                      pygame.image.load("./assets/Player1/dog_appear_0005.png")
+                      
                       ]
             rect = pygame.Rect(0,0,100,100)
         else:
-            animes = [pygame.image.load("./assets/Player2/eagle_death_0011.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0010.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0009.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0008.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0007.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0006.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0005.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0004.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0003.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0002.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0001.png"),
-                      pygame.image.load("./assets/Player2/eagle_death_0000.png")]
+            animes = [pygame.image.load("./assets/Player2/eagle_appear_0000.png"),
+                      pygame.image.load("./assets/Player2/eagle_appear_0001.png"),
+                      pygame.image.load("./assets/Player2/eagle_appear_0002.png"),
+                      pygame.image.load("./assets/Player2/eagle_appear_0003.png"),
+                      pygame.image.load("./assets/Player2/eagle_appear_0004.png"),
+                      pygame.image.load("./assets/Player2/eagle_appear_0005.png")]
             rect = pygame.Rect(0,0,100,100)
     elif idnum == 16:#バックグラウンドとカウントダウン
         if(Player1 == True):#背景
@@ -1121,31 +1113,38 @@ def anim_dic(Player1: bool, idnum):
                       pygame.image.load("./assets/Player2/girl_win_0020.png"),
                       pygame.image.load("./assets/Player2/girl_win_0021.png"),
                       pygame.image.load("./assets/Player2/girl_win_0022.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0023.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0024.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0025.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0026.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0027.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0028.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0029.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0030.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0031.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0032.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0033.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0034.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0035.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0036.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0037.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0038.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0039.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0040.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0041.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0042.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0043.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0044.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0045.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0046.png"),
-                      pygame.image.load("./assets/Player2/girl_win_0047.png")
+                      pygame.image.load("./assets/Player2/girl_win_0023.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+    elif idnum == 25:#partner damage
+        if(Player1 == True):
+            animes = [pygame.image.load("./assets/Player1/dog_damage_0000.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0001.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0002.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0003.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0004.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0005.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0006.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0007.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0008.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0009.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0010.png"),
+                      pygame.image.load("./assets/Player1/dog_damage_0011.png")
+                      ]
+            rect = pygame.Rect(0,0,100,100)
+        else:
+            animes = [pygame.image.load("./assets/Player2/eagle_damage_0000.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0001.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0002.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0003.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0004.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0005.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0006.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0007.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0008.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0009.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0010.png"),
+                      pygame.image.load("./assets/Player2/eagle_damage_0011.png")
                       ]
             rect = pygame.Rect(0,0,100,100)
             

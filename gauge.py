@@ -31,7 +31,7 @@ class Hp(pygame.sprite.Sprite):
             self.yellow = True
             self.precount = self.count
             
-        self.yellowlength = (int)((self.prehp2 - self.hp) * 4)
+        self.yellowlength = (int)((self.prehp2 - self.hp) * 3.3)
         
         if self.yellowlength <= 0:
             self.yellow = False
@@ -98,7 +98,7 @@ class Hissatsu(pygame.sprite.Sprite):
             d = 35
             
         else:
-            a = (int)(939 + 2.51 * (100 - self.value))
+            a = (int)(934 + 2.51 * (100 - self.value))
             b = 140
             c = (int)(self.value * 2.51)
             d = 35

@@ -9,6 +9,7 @@ import pygame
 from anim_dic import anim_dic
 from anim_dic import anime_play
 
+
 class Door(pygame.sprite.Sprite):
     
     def __init__(self, Player1):
@@ -80,7 +81,7 @@ def show_start_screen(screen: pygame.Surface,background :pygame.image):
     text = font.render("Press S to start", True, (200, 150, 0))
     screen.blit(text, (500, 500))
 
-    pygame.display.update()
+    pygame.display.flip()
 
     while True:
         for event in pygame.event.get():
@@ -100,7 +101,7 @@ def show_start_screen(screen: pygame.Surface,background :pygame.image):
         screen.blit(background, (0, 0))
         door_group.update()
         door_group.draw(screen)
-        pygame.display.update()
+        pygame.display.flip()
         clock.tick(60)
     return
     
@@ -122,13 +123,11 @@ class Win(pygame.sprite.Sprite):
         self.p1 = Player1
         self.se = pygame.mixer.Sound("./assets/se/iyopon.wav")
         self.se.set_volume(0.25)
-        if Player1 == True:
-            self.anime_seq = [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]
+        
+        self.anime_seq = []
+        for i in range(24):
+            self.anime_seq.append(7)
             
-        else:
-            self.anime_seq = []
-            for i in range(48):
-                self.anime_seq.append(4)
         self.image = self.animes[0]
 
             
@@ -138,10 +137,11 @@ class Win(pygame.sprite.Sprite):
             if self.init == True:
                 self.count = 0
                 self.init = False
+                self.image = self.animes[0]
                 
             #アニメーションの再生　再生は一回限り
             if self.count > 75:
-                self.image, end = anime_play(self.animes,self.anime_seq,self.count) 
+                self.image, end = anime_play(self.animes,self.anime_seq,self.count - 75) 
             
                 
             
@@ -158,46 +158,62 @@ class Win(pygame.sprite.Sprite):
             
         
         
-            #開始時より時間軸管理のためのカウント増加
-            self.count += 1
+            
             
         else:
-            self.image = self.animes[-1]       
-
+            self.image = self.animes[-1]   
+        #開始時より時間軸管理のためのカウント増加
+        self.count += 1
+clock = pygame.time.Clock()
 def show_finish_screen(screen,finish, op, doorgroup, win1, win2):
-    font = pygame.font.Font(None, 70)
-    clock = pygame.time.Clock()
-
-    if finish == True:
-        text = font.render("2Pwin!", True, (250, 50, 50))
-        win = win2
-    else:
-        text = font.render("1Pwin!", True, (250, 50, 50))
-        win = win1
-        
+    
+    
     wingroup = pygame.sprite.Group()
-    wingroup.add(win)
+    if finish == True:
+        
+        wingroup.add(win2)
+    else:
+        
+        wingroup.add(win1)
+        
+    
+
     op.active = True
+    c = 0
+    for i in range(60):
+        clock.tick(60)
     while True:
-        clock.tick(40)
+       
+        screen.fill((50,50,50))
         wingroup.update()
         wingroup.draw(screen)
         doorgroup.update()
         doorgroup.draw(screen)
-        pygame.display.update()
-        if win.active == False:
+        pygame.display.flip()
+        if c == 192:
             break
+        clock.tick(40)
+        c += 1
+        
     
-    screen.blit(text, (900, 300))
 
-    pygame.display.update()
+
+    pygame.display.flip()
+    
 
     while True:
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return
-            if event.type != pygame.KEYDOWN:
-                continue
-            elif event.key == ord('s'):
-                return
-        clock.tick(60)
+            # ESCキーが押されたら終了
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_s):
+                return 0
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_a):
+                win1.active = True
+                win1.init = True
+                win2.active = True
+                win2.init = True
+                show_finish_screen(screen, finish, op, doorgroup, win1, win2)
+                return 1
+            if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_r):
+                return 1
+                
+        clock.tick(30)

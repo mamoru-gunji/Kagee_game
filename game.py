@@ -1,3 +1,4 @@
+
 import sys
 import pygame
 from player import Player
@@ -6,12 +7,13 @@ from defence import Defence
 from attack import Attack,Elephant,Rabbit,Owl
 from gauge import Hp,Hissatsu,Background,Countdown
 from cutin import Cutin, Effect
-from yolo_take import detect
 #from gauge import Gauge
 import startsc
-from startsc import Door, Win
+
 import warnings
 warnings.filterwarnings('ignore')
+
+from startsc import Door, Win
 
 
 
@@ -30,7 +32,7 @@ def main():
 
 
     # スクリーンとバックグランドの設定
-    screen = pygame.display.set_mode((int(game_width), int(game_height)))
+    screen = pygame.display.set_mode((int(game_width), int(game_height)), flags=pygame.DOUBLEBUF | pygame.HWSURFACE | pygame.RESIZABLE)
     
     background = pygame.image.load('./assets/title_0000.png')
     background = pygame.transform.scale(
@@ -38,7 +40,7 @@ def main():
     background = background.convert_alpha()
     
     screen.blit(background, (0, 0))
-    pygame.display.update()
+    pygame.display.flip()
     
     black = pygame.image.load('./assets/black.png')
     black = black.convert_alpha()
@@ -48,20 +50,25 @@ def main():
        # scoreboard, (int(game_width), 100))
 
     fps = 60
+    winlist = [False, False]
 
     #bgm再生の例
     pygame.mixer.music.load("./assets/wafu.mp3")
     pygame.mixer.music.set_volume(0.3)
     
     update_type = 0
+    
+    font = pygame.font.Font(None, 70)
+    text = font.render("K.O.", True, (250, 30, 30))
+    
 
     #両プレイヤーの行動可否フラグ
     first_able = True
     second_able = True
     
     #入力管理系統
-    first_clist = [7,7,7,7,7]
-    second_clist = [7,7,7,7,7]
+    first_clist = [7,7,7,7,7,7,7]
+    second_clist = [7,7,7,7,7,7,7]
 
     
     f_cc = 7
@@ -117,7 +124,8 @@ def main():
     
     #エフェクト
     effect_dageki = Effect(False, 6, 895,220,350,350,False,False,[3,3,4,4,4,4])
-    effect_deffence = Effect(True, 9, 675,300,250,250,False,False,[2,2,2,2,2,2,2,2,2,2])
+    effect_deffence = Effect(True, 9, 150,0,1280,720,False,False,[2,2,2,2,2,2,2,2,2,2,2])
+    effect_deffence1 = Effect(False, 9, -100,0,1280,720,False,False,[2,2,2,2,2,2,2,2,2,2,2])
     
     #どあ
     door_close = Door(True)
@@ -189,6 +197,7 @@ def main():
     effect_group.add(first_partner.dog_atk1.effect)
     effect_group.add(effect_dageki)
     effect_group.add(effect_deffence)
+    effect_group.add(effect_deffence1)
     #特殊なエレファントグループ
     elephant_group = pygame.sprite.Group()
     elephant_group.add(first_elephant)
@@ -202,6 +211,7 @@ def main():
     se_deffence = pygame.mixer.Sound("./assets/se/deffence.wav")
     se_deffence.set_volume(0.35)
     se_owlhit = pygame.mixer.Sound("./assets/se/owl_hit.wav")
+    se_ko = pygame.mixer.Sound("./assets/se/KO.wav")
     bg_group = pygame.sprite.Group()
     bg_group.add(background1)
     
@@ -240,18 +250,22 @@ def main():
     
     startsc.show_start_screen(screen, background)
     countf = 0
+    countf2 = 0
     
     #初めのやーつです
     door_open.active = True
+    fcommand = '7'
+    scommand = '7'
+    
     while(True):
-        
-        detecttxt1 = open('out.txt', 'r')
-        fcommand = detecttxt1.read()
-        detecttxt1.close()
-
-        detect_text2 = open('out1.txt', 'r')
-        scommand = detect_text2.read()
-        detect_text2.close()
+        if countf2 > 30:
+            detecttxt1 = open('out.txt', 'r')
+            fcommand = detecttxt1.read()
+            detecttxt1.close()
+    
+            detect_text2 = open('out1.txt', 'r')
+            scommand = detect_text2.read()
+            detect_text2.close()
         
         for event in pygame.event.get():
             # ESCキーが押されたら終了
@@ -295,6 +309,7 @@ def main():
         fgroup1.draw(screen)
         door_group.update()
         door_group.draw(screen)
+        countf2 += 1
         
         
         
@@ -310,13 +325,18 @@ def main():
         if Player1 == True:
             first_hp.hp -= damage
             first_player.hirumi_seq[-1] = hirumilen
+            first_partner.hirumi_seq[-1] = hirumilen
             if first_hp.hp <= 0.0:
                 pygame.mixer.music.fadeout(1000)
                 first_player.death = True
                 first_partner.death = True
+                if winlist[0] == False:
+                    winlist[0]=True
+                    winlist[1]=True
                 fps = 30
             else:
                 first_player.hirumi = True
+                first_partner.hirumi = True
                 #first_player.hirumi_init = True
                 fps = 60
             first_player.excute = False
@@ -351,13 +371,18 @@ def main():
         else:
             second_hp.hp -= damage
             second_player.hirumi_seq[-1] = hirumilen
+            second_partner.hirumi_seq[-1] = hirumilen
             if second_hp.hp <= 0.0:
                 pygame.mixer.music.fadeout(1000)
                 second_player.death = True
                 second_partner.death = True
+                if winlist[0] == False:
+                    winlist[0]=True
+                    winlist[1]=False
                 fps = 30
             else:
                 second_player.hirumi = True
+                second_partner.hirumi = True
                 #second_player.hirumi_init = True
                 fps = 60
             second_player.excute = False
@@ -420,7 +445,7 @@ def main():
         first_clist.pop(0)
         second_clist.pop(0)
         
-        for i in range(5):
+        for i in range(7):
             first_clist2[first_clist[i]] += 1
             second_clist2[second_clist[i]] += 1
         
@@ -428,14 +453,14 @@ def main():
             if i == 7:
                 f_cc = 7
                 break
-            if first_clist2[i] >= 4:
+            if first_clist2[i] >= 6:
                 f_cc = i
                 break
         for i in range(8):
             if i == 7:
                 s_cc = 7
                 break
-            if second_clist2[i] >= 4:
+            if second_clist2[i] >= 6:
                 s_cc = i
                 break
             
@@ -560,7 +585,7 @@ def main():
             first_player.excute = True 
             if first_elephant.active1 == False:
                 first_eaglecutin.active = True
-            first_player.excute_seq[-1] = 75
+            first_player.excute_seq[-1] = 90
             if second_crab.active == True:
                 first_eagle.rect.x -= 270
         #ふくろう
@@ -594,14 +619,14 @@ def main():
                 first_player.excute = True
                 if first_elephant.active1 == False:
                     first_dogcutin.active = True
-                first_player.excute_seq[-1] = 100
+                first_player.excute_seq[-1] = 98
         #ぞう
         elif f_cc == 5:
-            if first_elephant.active1 == False and first_hissatsu.value >= 15.0 and first_elephant.active == False:
+            if first_elephant.active1 == False and  first_elephant.active == False:
                 first_elephant.active = True
                 first_player.excute = True
                 first_elephantcutin.active = True
-                first_hissatsu.value -= 15.0
+                first_hissatsu.value += 10.0
         
         #Player2
         #かに
@@ -627,11 +652,12 @@ def main():
                 second_player.excute_seq[-1] = 48
                 
             else:
+                second_partner.attack_init = True
                 second_partner.attack = True
                 second_player.excute = True
                 if second_elephant.active1 == False:
                     second_eaglecutin.active = True
-                second_player.excute_seq[-1] = 100
+                second_player.excute_seq[-1] = 106
         #ふくろう
         elif s_cc == 2:
             if second_owl.active == False and second_owl.active2 == False and second_owl.active3 == False and second_hissatsu.value >= 20.0:
@@ -657,16 +683,17 @@ def main():
             second_player.excute = True 
             if second_elephant.active1 == False:
                 second_dogcutin.active = True
-            second_player.excute_seq[-1] = 75
+            second_player.excute_seq[-1] = 90
             if first_crab.active == True:
                 second_dog.rect.x += 220
         #ぞう
         elif s_cc == 5:
-            if second_elephant.active1 == False and second_hissatsu.value >= 15.0 and second_elephant.active == False:
+            if second_elephant.active1 == False and  second_elephant.active == False:
                 second_elephant.active = True
                 second_player.excute = True
                 second_elephantcutin.active = True
-                second_hissatsu.value -= 15.0
+                second_hissatsu.value += 10.0
+                
         
             
         
@@ -714,19 +741,30 @@ def main():
             fps = damage(False,10.0,10)
             first_partner.hissatsu2.hantei[0] = False
         if first_partner.hissatsu2.hantei[1] == True:
-            fps = damage(False,10.0,15)
+            fps = damage(False,5.0,15)
             first_partner.hissatsu2.hantei[1] = False
         if first_partner.hissatsu2.hantei[2] == True:
             fps = damage(False,20.0,15)
-            first_hissatsu.value = 0
             second_hissatsu.value += 20.0
             first_partner.hissatsu2.hantei[2] = False
+        if first_partner.hangauge == True:
+            first_hissatsu.value = 0
+            first_partner.hangauge = False
             
+            #始祖鳥
         if second_partner.hissatsu2.hantei[0] == True:
-            fps = damage(True,40.0,30)
-            second_hissatsu.value = 0
-            first_hissatsu.value += 20.0
+            fps = damage(True,10.0,15)
             second_partner.hissatsu2.hantei[0] = False
+            
+        if second_partner.hissatsu2.hantei[1] == True:
+            fps = damage(True,30.0,30)
+            
+            first_hissatsu.value += 20.0
+            second_partner.hissatsu2.hantei[1] = False
+        if second_partner.hangauge == True:
+            second_hissatsu.value = 0
+            second_partner.hangauge = False
+            
             
          #わし弱攻撃  
         if first_eagle.hantei == True:
@@ -754,7 +792,7 @@ def main():
                     second_hissatsu.value += 3.0
                     #effect_dageki.active = True
                 else:
-                    #effect_deffence.active = True
+                    effect_deffence1.active = True
                     se_deffence.play()
                     first_hissatsu.value += 3.0
                     second_hissatsu.value += 10.0
@@ -806,8 +844,8 @@ def main():
                 second_partner.black = False
                 second_partner.hissatsu2.active = False
                 
-            for i in range(180):
-                if i == 106:
+            for i in range(260):
+                if i == 187:
                     door_close.active = True
                 screen.fill((50,50,50))
                 gauge_group.update()
@@ -831,12 +869,21 @@ def main():
                 
                 elephant_group.update()
                 elephant_group.draw(screen)
+                if i == 60:
+                    se_ko.play()
+                if i > 60:
+                    screen.blit(text, (600, 300))
+                    
                 door_group.update()
                 door_group.draw(screen)
                 pygame.display.flip()
                 clock.tick(fps)
-            startsc.show_finish_screen(screen,first_player.finish, door_open, door_group, win1, win2)
-            break
+            
+            opt = startsc.show_finish_screen(screen,winlist[1], door_open, door_group, win1, win2)
+            if opt == 0:
+                break
+            else:
+                main()
             
             
         
@@ -899,8 +946,8 @@ def main():
                
             
         
-        first_hissatsu.value += 0.0003 * (100.0 - first_hp.hp)
-        second_hissatsu.value += 0.0003 * (100.0 - second_hp.hp)
+        first_hissatsu.value += 0.0004 * (100.0 - first_hp.hp)
+        second_hissatsu.value += 0.0004 * (100.0 - second_hp.hp)
         
         
         #bgm管理ブロック

@@ -45,8 +45,8 @@ class Cutin(pygame.sprite.Sprite):
                            pygame.mixer.Sound("./assets/se/rabbit1.wav"),
                            pygame.mixer.Sound("./assets/se/owl1.wav"),
                            ]
-            a=300
-            b=380
+            a=350
+            b=350
             self.rect = pygame.Rect(a,b,300,500)
             
         else:
@@ -66,8 +66,8 @@ class Cutin(pygame.sprite.Sprite):
                            pygame.mixer.Sound("./assets/se/rabbit2.wav"),
                            pygame.mixer.Sound("./assets/se/owl2.wav"),
                            ]
-            a=850
-            b=380
+            a=800
+            b=350
             self.rect = pygame.Rect(a,b,300,500)
             
         self.origin = pygame.transform.scale(self.images[cutin_id],(self.keisu[0],self.keisu[1]))

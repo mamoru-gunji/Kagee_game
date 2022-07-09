@@ -277,8 +277,10 @@ class Hissatsu2(pygame.sprite.Sprite):
         self.p1 = Player1
         self.keisu = 4
         self.se = [pygame.mixer.Sound("./assets/se/wolf2_2.wav"), pygame.mixer.Sound("./assets/se/wolf2_3.wav"),pygame.mixer.Sound("./assets/se/wolf2_4.wav"),
-                   pygame.mixer.Sound("./assets/se/nail.wav"),pygame.mixer.Sound("./assets/se/nail2.wav")]
+                   pygame.mixer.Sound("./assets/se/nail.wav"),pygame.mixer.Sound("./assets/se/nail2.wav"),pygame.mixer.Sound("./assets/se/warp.wav"),
+                   pygame.mixer.Sound("./assets/se/arche2_1.wav"),pygame.mixer.Sound("./assets/se/arche1_2.wav"),pygame.mixer.Sound("./assets/se/arche2_2.wav")]
         self.seq = []
+        self.se[8].set_volume(1.0)
         if Player1 ==  True:
             
             for i in range(68):
@@ -312,8 +314,16 @@ class Hissatsu2(pygame.sprite.Sprite):
                     self.se[4].play()
                     self.se[1].play()
             else:
-                if self.count == self.keisu * 56:
+                if self.count == self.keisu * (16):
+                    self.se[5].play()
+                if self.count == self.keisu * (26 + 11):
+                    self.se[6].play() 
                     self.hantei[0] = True
+                if self.count == self.keisu * (26 + 20):
+                    self.se[7].play()   
+                if self.count == self.keisu * 56:
+                    self.hantei[1] = True
+                    self.se[8].play
                     
             if self.count >= sum(self.seq):
                 self.active = False
@@ -394,7 +404,7 @@ class Owl(pygame.sprite.Sprite):
         self.crab = False
 
         self.anime_seq = [3,3,3,3,3,3,3,3,3,3,3,3] #usagiがでてくるアニメの設定
-        self.anime_seql = [10,10,10,10,10,10]
+        self.anime_seql = [40,40,40,40,40,40]
         self.anime_seqf = [3,2,3,2,
                            3,2,3,2,
                            3,2,3,2,

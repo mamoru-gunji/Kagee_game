@@ -24,6 +24,7 @@ class Partner(pygame.sprite.Sprite):
         self.hantei = False
         self.attack_init = True
         self.crab = False
+        self.hangauge = False
         self.dog_se = pygame.mixer.Sound("./assets/se/dog.wav")
         self.wolf_2_1 = pygame.mixer.Sound("./assets/se/wolf2_1.wav")
         self.arche2_1 = pygame.mixer.Sound("./assets/se/arche.wav")
@@ -37,6 +38,11 @@ class Partner(pygame.sprite.Sprite):
         self.hissatsu_seq = [6,6,6,6,6,6,6,6,6,6,6,6]
         
         self.hissatsu2 = Hissatsu2(Player1)
+        
+        #hirumi関連
+        self.hirumi = False
+        self.hirumi_init =True
+        self.hirumi_seq = [2,2,2,2,2,2,2,3,3,3,3,35]
             
         #death関連
         self.death = False
@@ -47,6 +53,7 @@ class Partner(pygame.sprite.Sprite):
         self.norm_animes, self.rect = anim_dic(Player1, 1)
         self.trans_animes,self.rect_t = anim_dic(Player1, 10)
         self.death_animes,rec = anim_dic(Player1,13)
+        self.hirumi_animes, rec = anim_dic(Player1, 25)
         if Player1 == True:
             
             self.attack_animes, self.rect1 = anim_dic(Player1, 5)
@@ -89,7 +96,21 @@ class Partner(pygame.sprite.Sprite):
         
     def update(self):
         #通常アタック関係
-        if self.attack == True:
+        if self.hirumi == True:
+            if self.hirumi_init == True:
+                self.hirumi_init = False
+                self.update_count = 0
+                
+             #アニメーションの再生　再生は一回限り
+            self.image, end = anime_play(self.hirumi_animes,self.hirumi_seq,self.update_count)
+            
+            if self.update_count >= sum(self.hirumi_seq):
+                #怯みの正常終了
+                 self.hirumi = False
+                 self.hirumi_init = True
+                 self.hirumi_seq[-1] = 35#怯み時間を正常化
+                 
+        elif self.attack == True:
             if self.attack_init == True:
                 self.update_count = 0
                 self.attack_init = False
@@ -109,7 +130,7 @@ class Partner(pygame.sprite.Sprite):
                     else:
                         self.dog_atk1.active = True
                 
-                if self.update_count >= (sum(self.attack_seq) + sum(self.dog_atk.anime_seq)):
+                if self.update_count >= (69 + sum(self.dog_atk.anime_seq) - 5):
                     #正常終了
                     self.attack = False
                     self.attack_init = True
@@ -122,7 +143,7 @@ class Partner(pygame.sprite.Sprite):
                         
                     else:
                         self.eagle_atk1.active = True
-                if self.update_count >= (sum(self.attack_seq)+ sum(self.eagle_atk.anime_seq)):
+                if self.update_count >= (59 + sum(self.eagle_atk.anime_seq)):
                     #正常終了
                     self.attack = False
                     self.attack_init = True
@@ -138,10 +159,12 @@ class Partner(pygame.sprite.Sprite):
             if self.Player1 == True:
                 if self.update_count == 61:
                     self.black = True
+                    self.hangauge = True
                     self.wolf_2_1.play()
             else:
                 if self.update_count == 61:
                     self.black = True
+                    self.hangauge = True
                     self.arche2_1.play()
                 
             if self.update_count >= sum(self.trans_seq):
@@ -185,7 +208,7 @@ class Partnerf(pygame.sprite.Sprite):
         self.update_count = 0
         self.init = True
         self.stand_seq =[6,6,6,6,6,6,6,6,6,6,6,6]
-        self.born_seq = [5,5,5,5,5,5,5,5,5,5,5,5]
+        self.born_seq = [5,5,5,12,12,12]
         #パートナーのアタックに関するメンバ
         
 
