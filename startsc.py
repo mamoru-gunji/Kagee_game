@@ -2,9 +2,10 @@
 """
 Created on Wed Jun  1 20:17:41 2022
 
-@author: takep
+@author: takep & mg
 """
 
+import time
 import pygame
 from anim_dic import anim_dic
 from anim_dic import anime_play
@@ -82,20 +83,24 @@ def show_start_screen(screen: pygame.Surface,background :pygame.image):
     screen.blit(text, (500, 500))
 
     pygame.display.flip()
-
-    while True:
+    start_time = time.time()
+    
+    while time.time() - start_time < 3:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 break
             if event.type != pygame.KEYDOWN:
                 continue
             elif event.key == ord('s'):
-                print('S')
+                print('START')
                 op.active = True
                 break
         if op.active == True:
             break
         clock.tick(60)
+
+    op.active = True
+
         
     for i in range(sum(op.anime_seq)):
         screen.blit(background, (0, 0))
