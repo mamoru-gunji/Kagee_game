@@ -1,7 +1,7 @@
 # About
 A game that use recognized hand shapes by YOLO as controllers
 
-![demo](src/demo.mp4)
+![demo](src/demo.gif)
 
 ## Usage
 ```sh
